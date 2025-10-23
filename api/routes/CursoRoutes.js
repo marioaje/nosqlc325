@@ -29,6 +29,53 @@ route.post('/', async(req, resp) =>{
     }
 );
 
+//Update put
+route.put('/:id', async(req, resp) =>{
+
+       try {
+
+               const cursoActualizado = await Curso.findByIdAndUpdate(
+                         req.params.id,
+                         req.body,
+                         {new: true}
+
+                    );
+
+               if (!cursoActualizado){
+                    return resp.status(404).json({mesaje: "Curso no encontrado"});
+               }
+            
+               resp.status(200).json(cursoActualizado);
+       }catch(error){
+            resp.status(400).json({mesaje: error.message});
+       }
+
+    }
+);
+
+
+//Delete 
+route.delete('/:id', async(req, resp) =>{
+
+       try {
+
+               const cursoEliminado = await Curso.findByIdAndDelete(
+                         req.params.id,
+                    );
+
+               if (!cursoEliminado){
+                    return resp.status(404).json({mesaje: "Curso no encontrado"});
+               }
+            
+               resp.status(200).json({mesaje : 'Curso eliminado'});
+       }catch(error){
+            resp.status(400).json({mesaje: error.message});
+       }
+
+    }
+);
+
+
 
 //Obtener dats
 route.get('/', async(req, resp) =>{
