@@ -30,4 +30,20 @@ route.post('/', async(req, resp) =>{
 );
 
 
+//Obtener dats
+route.get('/', async(req, resp) =>{
+               try {
+                         const cursoDatos = await Curso.find();
+                         resp.json(cursoDatos);
+               }catch(error){
+                         resp.status(500).json({mesaje: error.message});
+               }
+      }
+);
+
+// route.get('/', async(req, resp) =>{
+
+//       }
+// );
+
 module.exports = route;
