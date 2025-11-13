@@ -9,7 +9,7 @@ const cors = require('cors');//URL y https
 //const rutas
 
 const app = express();
-const PORT = 6000;
+const PORT = 3000;
 
 //Middlewares (Son como las urls del sitio) 
 app.use(cors());
