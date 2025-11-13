@@ -21,6 +21,7 @@ async function cargarDatos() {
                         <td>${elementCurso.nombre}</td>
                         <td>${elementCurso.descripcion}</td>
                         <td>${elementCurso.estado}</td>
+                        <td>${elementCurso.correo}</td>
                     </tr>
         `;
     });
@@ -29,6 +30,44 @@ async function cargarDatos() {
 
     console.log(cursos);
 }
+
+
+
+//Seccion de guardar
+document.getElementById("cursoFormulario").addEventListener('submit', async e => {
+
+    e.preventDefault();
+
+    try {
+
+
+        const datos = {
+            nombre: document.getElementById("nombre").value,
+            estado: document.getElementById("estado").value,
+            correo: document.getElementById("correo").value,
+            descripcion: document.getElementById("descripcion").value,
+        }
+
+
+        
+
+        await fetch(APIURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+        });
+
+
+
+        e.target.reset();
+        cargarDatos();
+    } catch (error) {
+        console.log("error" + error);
+    }
+
+});
+
+
 
 cargarDatos();
 
