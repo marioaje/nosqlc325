@@ -22,6 +22,24 @@ async function cargarDatos() {
                         <td>${elementCurso.descripcion}</td>
                         <td>${elementCurso.estado}</td>
                         <td>${elementCurso.correo}</td>
+                        <td>
+                        
+                            <a
+                                name=""
+                                id=""
+                                class="btn btn-primary"
+                                href="#"
+                                role="button"
+                                >Editar</a>
+
+                            <a
+                                        name=""
+                                        id=""
+                                        class="btn btn-danger"
+                                        href="#"
+                                        role="button"
+                                        >Eliminar</a>
+                        </td>
                     </tr>
         `;
     });
@@ -49,7 +67,7 @@ document.getElementById("cursoFormulario").addEventListener('submit', async e =>
         }
 
 
-        
+
 
         await fetch(APIURL, {
             method: 'POST',
